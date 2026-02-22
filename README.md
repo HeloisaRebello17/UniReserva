@@ -1,5 +1,5 @@
 <div class="cabecalho">
-  <img src="https://lh3.googleusercontent.com/gg-dl/AOI_d__Jxy8a-0pgDSkc_9PhMbW6WewqtjZ12YK44EIW3IPdJmqcUs5961_riltyUlUAvfYU_W86-rvjkLemen0mC97WKYPCHlhJ3CxFyhzlvcx2q5On4F0CN5jqzKopZjCRqwZyrjwlwhK-rTDNNm3DJj3Sw5YcznJhSXl5yxujELFIsWFe=s1024-rj" />
+  <img src="../UniReserva---Programa-o-Web/assets/images/Logo_UniReserva.png" />
   <h2 align="center"> UniReserva </h2>
 </div>
 
