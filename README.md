@@ -143,7 +143,7 @@
   <br>
   <h3>Autenticação</h3>
   <ul>
-    <li><p>JWT (JSON Web Token)r</p></li>
+    <li><p>JWT (JSON Web Token)</p></li>
   </ul>
   <p><b>Justificativa:</b></p>
   <ul>
@@ -161,5 +161,5 @@
   <img align="center" alt="JAVASCRIPT" height="40" width="40" src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000.png"/>
   <img align="center" alt="HTML" height="40" width="40" src="https://img.icons8.com/?size=100&id=v8RpPQUwv0N8&format=png&color=000000.png"/>
   <img align="center" alt="POSTGRESQL" height="40" width="40" src="https://img.icons8.com/?size=100&id=JRnxU7ZWP4mi&format=png&color=000000.png"/>
-  
+  <img align="center" alt="POSTGRESQL" height="40" width="40" src="https://img.icons8.com/?size=100&id=21278&format=png&color=000000.png"/>
   </div>
