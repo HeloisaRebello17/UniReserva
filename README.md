@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/Logo_UniReserva.png" alt="Logo UniReserva" width="300" />
+  <img src="assets/images/Logo_UniReserva.png" alt="Logo UniReserva" width="200" />
 </p>
 
 <h2 align="center"> UniReserva </h2>
