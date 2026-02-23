@@ -159,7 +159,7 @@
   <img  align="center" alt="VSCODE" height="35" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
   <img align="center" alt="NOTION" height="40" width="40" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png"/>
   <img align="center" alt="JAVASCRIPT" height="40" width="40" src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000.png"/>
-  <img align="center" alt="JAVASCRIPT" height="40" width="40" src="https://img.icons8.com/?size=100&id=v8RpPQUwv0N8&format=png&color=000000.png"/>
+  <img align="center" alt="HTML" height="40" width="40" src="https://img.icons8.com/?size=100&id=v8RpPQUwv0N8&format=png&color=000000.png"/>
   <img align="center" alt="POSTGRESQL" height="40" width="40" src="https://img.icons8.com/?size=100&id=JRnxU7ZWP4mi&format=png&color=000000.png"/>
   
   </div>
