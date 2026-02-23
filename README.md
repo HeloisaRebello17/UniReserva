@@ -1,4 +1,4 @@
-<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/62aa0236-5a02-4ea7-975b-31d412b253be" /><img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/325827da-f611-4895-980a-ff13440f6359" /><p align="center">
+<p align="center">
   <img src="assets/images/Logo_UniReserva.png" alt="Logo UniReserva" width="200" />
 </p>
 
