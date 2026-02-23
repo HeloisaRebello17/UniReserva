@@ -1,7 +1,8 @@
-<div class="cabecalho">
-  <img src="../assets/images/Logo_UniReserva.png" />
-  <h2 align="center"> UniReserva </h2>
-</div>
+<p align="center">
+  <img src="assets/images/Logo_UniReserva.png" alt="Logo UniReserva" />
+</p>
+
+<h2 align="center"> UniReserva </h2>
 
 <div class="descricao_projeto">
   <h2> Descrição do Projeto </h2>
