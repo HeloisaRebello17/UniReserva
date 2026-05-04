@@ -188,12 +188,14 @@ Se você já criou o app e quer adicionar DB depois:
 Depois que o PostgreSQL foi adicionado:
 
 ✅ Você verá **dois containers** no dashboard:
+
 - `UniReserva` (seu app)
 - `postgres` (seu banco)
 
 ✅ Ambos com status **✅ Running**
 
 ✅ Ao clicar em "Variables" do app, você verá as variáveis do banco:
+
 ```
 ${{Postgres.PGHOST}}
 ${{Postgres.PGPORT}}
@@ -203,6 +205,7 @@ ${{Postgres.PGDATABASE}}
 ```
 
 ✅ Os logs do postgres mostram:
+
 ```
 [DONE] postgres running on port 5432
 ```
@@ -214,6 +217,7 @@ ${{Postgres.PGDATABASE}}
 ### Problema: "+ New" não aparece
 
 **Solução:**
+
 1. Recarregue a página (F5)
 2. Ou clique em seu projeto no painel esquerdo
 3. O botão "+ New" deve aparecer
@@ -221,6 +225,7 @@ ${{Postgres.PGDATABASE}}
 ### Problema: PostgreSQL não inicia
 
 **Solução:**
+
 1. Vá para o container "postgres"
 2. Clique em "View Logs"
 3. Procure por erro específico
@@ -229,6 +234,7 @@ ${{Postgres.PGDATABASE}}
 ### Problema: Variáveis não aparecem automaticamente
 
 **Solução:**
+
 1. Aguarde 1-2 minutos
 2. Atualize a página (F5)
 3. Vá para "Variables" do seu app
@@ -242,16 +248,18 @@ Depois que PostgreSQL for criado:
 
 ✅ Ir para **Step 4** do guia principal
 ✅ Configurar as **Variáveis** do seu app:
-   - NODE_ENV=production
-   - JWT_SECRET=<seu-secret>
-   - LOG_LEVEL=info
+
+- NODE_ENV=production
+- JWT_SECRET=<seu-secret>
+- LOG_LEVEL=info
 
 ✅ Railway vai **auto-popular**:
-   - DB_HOST
-   - DB_PORT
-   - DB_USER
-   - DB_PASSWORD
-   - DB_NAME
+
+- DB_HOST
+- DB_PORT
+- DB_USER
+- DB_PASSWORD
+- DB_NAME
 
 ---
 

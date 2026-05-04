@@ -11,7 +11,7 @@ O sistema está **registrando TODAS as requisições** em tempo real em arquivo 
 ```
 Total de eventos: 145
 ├─ GET:    47 requisições
-├─ POST:   83 requisições  
+├─ POST:   83 requisições
 └─ DELETE: 15 requisições
 
 Status codes:
@@ -29,6 +29,7 @@ Status codes:
 ## 🔍 Onde Visualizar os Logs
 
 ### 1️⃣ **Arquivo de Logs (JSON)**
+
 ```bash
 # Ver últimos 10 eventos
 tail -10 src/logs/app.log | jq .
@@ -41,6 +42,7 @@ cat src/logs/app.log | jq 'select(.status >= 400)'
 ```
 
 ### 2️⃣ **Estatísticas em Tempo Real**
+
 ```bash
 # Total de requisições
 wc -l src/logs/app.log
@@ -57,6 +59,7 @@ cat src/logs/app.log | jq -r 'select(.duration) | .duration' | grep -oE '[0-9]+'
 ```
 
 ### 3️⃣ **Monitorar Erro 409 (Conflitos)**
+
 ```bash
 # Ver todas as requisições com conflito (double-booking)
 cat src/logs/app.log | jq 'select(.status == 409)'
@@ -83,6 +86,7 @@ cat src/logs/app.log | jq 'select(.status == 409)' | wc -l
 ```
 
 ### Campos Capturados:
+
 - ✅ **timestamp**: Quando a requisição ocorreu (UTC)
 - ✅ **method**: GET, POST, DELETE, etc
 - ✅ **path**: Endpoint chamado
@@ -96,12 +100,14 @@ cat src/logs/app.log | jq 'select(.status == 409)' | wc -l
 ## 🔬 Como Validar Cenários
 
 ### Teste 1: Requisição Bem-Sucedida
+
 ```bash
 curl -s http://localhost:3001/api/health | jq .
 # Verifica se status 200 aparece no log
 ```
 
-### Teste 2: Autenticação Bem-Sucedida  
+### Teste 2: Autenticação Bem-Sucedida
+
 ```bash
 curl -s -X POST http://localhost:3001/api/auth/login \
   -H "Content-Type: application/json" \
@@ -111,12 +117,14 @@ curl -s -X POST http://localhost:3001/api/auth/login \
 ```
 
 ### Teste 3: Conflito de Horário (409)
+
 ```bash
 # Cria 2 reservas no mesmo horário
 # Verifica se status 409 aparece no log com conflito detectado
 ```
 
 ### Teste 4: Acesso Não Autorizado (403)
+
 ```bash
 # Tenta deletar reserva de outro usuário
 # Verifica se status 403 aparece no log
@@ -129,24 +137,30 @@ curl -s -X POST http://localhost:3001/api/auth/login \
 O sistema está pronto para integrar com:
 
 ### **Sentry** (Error Tracking)
+
 ```bash
 # Adicionar ao .env
 SENTRY_DSN=https://examplePublicKey@o0.ingest.sentry.io/0
 ```
+
 Veja: [OBSERVABILITY.md](docs/OBSERVABILITY.md) → Seção Sentry
 
 ### **DataDog** (APM + Logs)
+
 ```bash
-# Adicionar ao .env  
+# Adicionar ao .env
 DATADOG_API_KEY=seu-api-key
 ```
+
 Veja: [OBSERVABILITY.md](docs/OBSERVABILITY.md) → Seção DataDog
 
 ### **Grafana + Prometheus**
+
 ```bash
 # Endpoint de métricas disponível
 GET /metrics
 ```
+
 Veja: [OBSERVABILITY.md](docs/OBSERVABILITY.md) → Seção Prometheus
 
 ---
@@ -158,10 +172,11 @@ Veja: [OBSERVABILITY.md](docs/OBSERVABILITY.md) → Seção Prometheus
 > "O sistema implementa **3 camadas de observabilidade**:
 >
 > 1. **Logging Estruturado (JSON)**: Todos os eventos registrados com contexto completo
-> 2. **HTTP Middleware**: Cada requisição capturada automaticamente  
+> 2. **HTTP Middleware**: Cada requisição capturada automaticamente
 > 3. **Arquivo Persistente**: Logs salvos em `src/logs/app.log` para análise posterior
 >
 > Podemos validar:
+>
 > - ✅ 145 eventos capturados (teste completo)
 > - ✅ Distribuição: 47 GETs, 83 POSTs, 15 DELETEs
 > - ✅ Detecção de erros: 409 (conflitos), 403 (não autorizado), 400 (inválido)
@@ -209,6 +224,5 @@ Use: `bash check-monitoring.sh`
 ## 📚 Referências
 
 - 📄 [Documentação Completa de Observabilidade](docs/OBSERVABILITY.md)
-- 🔧 [Código do Logger](src/utils/logger.js)  
+- 🔧 [Código do Logger](src/utils/logger.js)
 - 🔌 [Middleware de Logging](src/middleware/logging.js)
-

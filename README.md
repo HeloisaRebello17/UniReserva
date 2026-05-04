@@ -223,9 +223,9 @@
     <li><p><b>Banco de dados:</b> schema em <code>db/schema.sql</code>, seed em <code>db/seed.sql</code>, script de inicialização em <code>scripts/initDb.js</code>.</p></li>
     <li><p><b>Testes automatizados:</b> testes de integração em <code>test/api.test.js</code> e testes unitários em <code>test/services.test.js</code> (18+ testes).</p></li>
     <li><p><b>CI/CD Pipeline:</b> workflow automático em <code>.github/workflows/ci.yml</code> com testes, linting, auditoria de segurança e build Docker.</p></li>
-    <li><p><b>Configuração de Produção:</b> <code>Dockerfile</code> otimizado, <code>docker-compose.prod.yml</code> e <code>docs/DEPLOYMENT.md</code> com guias de deployment.</p></li>
-    <li><p><b>Observabilidade:</b> logger estruturado em <code>src/utils/logger.js</code>, middleware de logging HTTP e documentação em <code>docs/OBSERVABILITY.md</code>.</p></li>
-    <li><p><b>Documentação:</b> <code>README.SETUP.md</code> (setup e troubleshooting), <code>IMPLEMENTATION_SUMMARY.md</code> (resumo técnico), <code>QUICK_START_DEPLOY.md</code> (deploy rápido).</p></li>
+    <li><p><b>Configuração de Produção:</b> <code>Dockerfile</code> otimizado, <code>docker-compose.prod.yml</code> para deployment em containers.</p></li>
+    <li><p><b>Observabilidade:</b> logger estruturado em <code>src/utils/logger.js</code>, middleware de logging HTTP em <code>src/middleware/logging.js</code>, script de validação <code>check-monitoring.sh</code> e documentação em <code>MONITORING_VALIDATION.md</code>.</p></li>
+    <li><p><b>Documentação:</b> <code>FREE_DEPLOYMENT.md</code> (opções gratuitas), <code>FREE_RAILWAY_QUICK_START.md</code> (deploy rápido), <code>RAILWAY_ADD_DATABASE_VISUAL_GUIDE.md</code> (guia visual).</p></li>
     <li><p><b>Arquitetura C4:</b> diagramas em <code>c4-context.puml</code>, <code>c4-container.puml</code> e <code>c4-components.puml</code>.</p></li>
   </ul>
 
@@ -303,13 +303,21 @@
     <li><p><b>Aplicação Local:</b> <code>npm start</code> inicia servidor em http://localhost:3000.</p></li>
   </ul>
 
-  <h3>Documentação Adicional</h3>
+  <h3>Monitoramento e Observabilidade</h3>
+  <p>O sistema possui <b>monitoramento estruturado em produção</b> com logging automático de todas as requisições HTTP.</p>
   <ul>
-    <li><p><b><a href="README.SETUP.md">README.SETUP.md</a></b> → Setup completo, troubleshooting e FAQ.</p></li>
-    <li><p><b><a href="IMPLEMENTATION_SUMMARY.md">IMPLEMENTATION_SUMMARY.md</a></b> → Resumo técnico de todas as implementações.</p></li>
-    <li><p><b><a href="QUICK_START_DEPLOY.md">QUICK_START_DEPLOY.md</a></b> → Deploy rápido em Railway.</p></li>
-    <li><p><b><a href="docs/DEPLOYMENT.md">docs/DEPLOYMENT.md</a></b> → Guia completo de deployment em produção.</p></li>
-    <li><p><b><a href="docs/OBSERVABILITY.md">docs/OBSERVABILITY.md</a></b> → Implementação de observabilidade, logging e monitoramento.</p></li>
+    <li><p><b>Logging Estruturado:</b> Todos os eventos registrados em JSON (arquivo <code>src/logs/app.log</code>).</p></li>
+    <li><p><b>HTTP Request Logging:</b> Middleware automático captura método, path, status, duration, IP e userId.</p></li>
+    <li><p><b>Análise de Logs:</b> Execute <code>bash check-monitoring.sh</code> para visualizar dashboard com estatísticas em tempo real.</p></li>
+    <li><p><b>Validação:</b> Ver <code>MONITORING_VALIDATION.md</code> para exemplos de análise de logs e detecção de erros.</p></li>
+  </ul>
+
+  <h3>Documentação Disponível</h3>
+  <ul>
+    <li><p><b><a href="MONITORING_VALIDATION.md">MONITORING_VALIDATION.md</a></b> → Guia completo de validação de monitoramento com exemplos.</p></li>
+    <li><p><b><a href="FREE_DEPLOYMENT.md">FREE_DEPLOYMENT.md</a></b> → Opções gratuitas para deployment em produção (Railway, Render, Fly.io).</p></li>
+    <li><p><b><a href="FREE_RAILWAY_QUICK_START.md">FREE_RAILWAY_QUICK_START.md</a></b> → Deploy em Railway em 10 minutos.</p></li>
+    <li><p><b><a href="RAILWAY_ADD_DATABASE_VISUAL_GUIDE.md">RAILWAY_ADD_DATABASE_VISUAL_GUIDE.md</a></b> → Guia visual com diagramas para adicionar PostgreSQL no Railway.</p></li>
   </ul>
 
   <h3>Usuários de Demonstração</h3>

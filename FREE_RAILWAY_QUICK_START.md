@@ -1,6 +1,7 @@
 # ⚡ Deploy Gratuito em 10 Minutos (Railway)
 
 ## 🎯 Objetivo
+
 Colocar UniReserva online **100% GRÁTIS** usando Railway.
 
 **Custo:** $0 (usando créditos gratuitos de $5/mês)
@@ -55,6 +56,7 @@ Railroad começará a detectar Dockerfile e criar container!
 Railway irá provisionar PostgreSQL automaticamente ✨
 
 **O que você verá após:**
+
 - Container "postgres" adicionado ao dashboard
 - Status: ✅ Running
 - Variáveis de banco preenchidas automaticamente
@@ -141,11 +143,13 @@ Compartilhe essa URL com qualquer pessoa! Ela pode acessar o UniReserva agora.
 ### 1. Health Check
 
 Abra no browser:
+
 ```
 https://seu-projeto.railway.app/api/health
 ```
 
 Deve retornar:
+
 ```json
 {
   "status": "ok",
@@ -160,6 +164,7 @@ https://seu-projeto.railway.app
 ```
 
 Login:
+
 - **Email**: professor@unireserva.com
 - **Senha**: prof123
 
@@ -296,6 +301,7 @@ Logs: Tempo real no Dashboard
 ## 📞 Suporte Railway
 
 Se tiver problema:
+
 - Railway Docs: https://docs.railway.app
 - Railway Community: https://railway.app/chat
 
