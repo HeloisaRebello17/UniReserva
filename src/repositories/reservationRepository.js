@@ -107,11 +107,30 @@ async function cancelReservation(id) {
   return result.rows[0] ? mapReservation(result.rows[0]) : null;
 }
 
+async function updateReservationById(id, { date, startTime, endTime, roomId, userId, status }) {
+  const db = getDatabase();
+  const result = await db.query(
+    `UPDATE reservations
+     SET date = $2,
+         start_time = $3,
+         end_time = $4,
+         room_id = $5,
+         user_id = $6,
+         status = $7
+     WHERE id = $1
+     RETURNING id, date, start_time, end_time, room_id, user_id, status`,
+    [id, date, startTime, endTime, roomId, userId, status]
+  );
+
+  return result.rows[0] ? mapReservation(result.rows[0]) : null;
+}
+
 module.exports = {
   listReservations,
   findReservationById,
   findConflict,
   findUserConflict,
   createReservation,
-  cancelReservation
+  cancelReservation,
+  updateReservationById
 };

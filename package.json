@@ -24,5 +24,19 @@
     "eslint": "^8.56.0",
     "pg-mem": "^3.0.5",
     "supertest": "^7.1.0"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeloisaRebello17/UniReserva.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeloisaRebello17/UniReserva/issues"
+  },
+  "homepage": "https://github.com/HeloisaRebello17/UniReserva#readme"
 }

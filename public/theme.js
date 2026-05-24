@@ -4,9 +4,14 @@ function applyTheme(theme) {
   const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', resolvedTheme);
 
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = resolvedTheme === 'dark' ? '☀️' : '🌙';
+  }
+
   const toggleButton = document.getElementById('theme-toggle');
   if (toggleButton) {
-    toggleButton.textContent = resolvedTheme === 'dark' ? 'Modo claro' : 'Modo escuro';
+    toggleButton.setAttribute('aria-label', resolvedTheme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
   }
 }
 

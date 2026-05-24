@@ -8,34 +8,48 @@
 </head>
 <body>
   <header class="hero">
-    <div class="hero-brand">
-      <img src="/assets/images/Logo_UniReserva.png" alt="Logo UniReserva" class="logo" />
-      <div>
+    <div class="hero-content">
+      <div class="hero-brand">
         <h1>UniReserva</h1>
-        <p>Sistema de reserva de salas</p>
+        <p>Sistema de Reserva de Salas Universitárias</p>
       </div>
     </div>
     <div class="hero-actions">
-      <button id="theme-toggle" type="button" class="theme-toggle">Modo escuro</button>
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Alternar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
     </div>
   </header>
 
-  <main class="grid grid-centered-narrow">
-    <section class="card card-wide">
-      <h2>Bem-vindo ao UniReserva</h2>
-      <p>Sistema moderno e intuitivo para gerenciamento de reservas de salas.</p>
-      <p>Este sistema oferece:</p>
-      <ul style="margin: 15px 0;">
-        <li>✓ Autenticação segura de usuários</li>
-        <li>✓ Visualização de salas disponíveis</li>
-        <li>✓ Criação e consulta de reservas</li>
-        <li>✓ Gerenciamento de horários</li>
-      </ul>
-      <p style="margin-top: 20px;">
-        <a href="login.html" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; display: inline-block;">Acessar Sistema</a>
-      </p>
-    </section>
+  <main class="container">
+    <div class="roles-grid">
+      <!-- Card Administrador -->
+      <div class="role-card card-admin">
+        <div class="card-icon">
+          <div class="container-icons">
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-shield" data-fg-djkv25="1.47:1.9237:/src/app/components/LoginPage.tsx:81:21:3386:43:e:Shield::::::B8zf" data-fgid-djkv25=":rr:">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+          </div>
+        </div>
+        <p class="name-config">Administrador</p>
+        <p class="card-description">Acesso completo ao sistema. Gerencie salas, usuários e reservas.</p>
+        <a href="admin-login.html" class="link-loginAdm">Fazer login <span>→</span></a>
+      </div>
+
+      <!-- Card Professor -->
+      <div class="role-card card-professor">
+        <div class="card-icon">
+          <div class="container-icons-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap w-8 h-8 text-accent" data-fg-djkv39="1.47:1.9237:/src/app/components/LoginPage.tsx:110:21:4979:49:e:GraduationCap::::::CR9S" data-fgid-djkv39=":r15:"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+          </div>
+        </div>
+        <p class="name-config">Professor</p>
+        <p class="card-description">Visualize disponibilidade e reserve salas para suas aulas.</p>
+        <a href="professor-login.html" class="link-loginProf">Fazer login <span>→</span></a>
+      </div>
+    </div>
   </main>
+
   <script src="theme.js"></script>
 </body>
 </html>

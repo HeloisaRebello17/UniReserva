@@ -1,12 +1,63 @@
+const fs = require('fs');
+const path = require('path');
 const { Pool } = require('pg');
 const store = require('../data/store');
 
 let externalAdapter = null;
 let pool = null;
+let mockStateLoaded = false;
+const MOCK_STATE_PATH = path.join(__dirname, '..', 'data', 'store-state.json');
+
+function loadMockState() {
+  if (mockStateLoaded) {
+    return;
+  }
+
+  mockStateLoaded = true;
+
+  if (!fs.existsSync(MOCK_STATE_PATH)) {
+    return;
+  }
+
+  try {
+    const rawState = fs.readFileSync(MOCK_STATE_PATH, 'utf8');
+    if (!rawState.trim()) {
+      return;
+    }
+
+    const parsedState = JSON.parse(rawState);
+    if (Array.isArray(parsedState.users)) {
+      store.users = parsedState.users;
+    }
+    if (Array.isArray(parsedState.rooms)) {
+      store.rooms = parsedState.rooms;
+    }
+    if (Array.isArray(parsedState.reservations)) {
+      store.reservations = parsedState.reservations;
+    }
+  } catch (error) {
+    console.warn('Falha ao carregar o estado persistido do mock:', error.message);
+  }
+}
+
+function persistMockState() {
+  const payload = JSON.stringify(
+    {
+      users: store.users,
+      rooms: store.rooms,
+      reservations: store.reservations
+    },
+    null,
+    2
+  );
+
+  fs.writeFileSync(MOCK_STATE_PATH, payload, 'utf8');
+}
 
 // Mock database adapter para desenvolvimento sem PostgreSQL
 class MockDatabase {
   async query(sql, params = []) {
+    loadMockState();
     const sqlLower = sql.toLowerCase();
     
     // Ignorar CREATE TABLE e comentários
@@ -31,7 +82,14 @@ class MockDatabase {
         type: params[3] || 'common'
       };
       store.users.push(newUser);
+      persistMockState();
       return { rows: [newUser] };
+    }
+
+    // SELECT users list
+    if (sqlLower.includes('select') && sqlLower.includes('from users') && !sqlLower.includes('where email')) {
+      const users = store.users.map(({ password, ...user }) => user);
+      return { rows: users };
     }
 
     // SELECT FROM rooms
@@ -55,7 +113,23 @@ class MockDatabase {
         type: params[2]
       };
       store.rooms.push(newRoom);
+      persistMockState();
       return { rows: [newRoom] };
+    }
+
+    // UPDATE rooms WHERE id
+    if (sqlLower.includes('update rooms') && sqlLower.includes('where id')) {
+      const id = Number(params[0]);
+      const room = store.rooms.find(r => Number(r.id) === id);
+      if (!room) {
+        return { rows: [] };
+      }
+
+      room.name = params[1];
+      room.capacity = params[2];
+      room.type = params[3];
+      persistMockState();
+      return { rows: [room] };
     }
 
     // DELETE FROM rooms WHERE id
@@ -69,6 +143,7 @@ class MockDatabase {
       const [deletedRoom] = store.rooms.splice(roomIndex, 1);
       // Simula ON DELETE CASCADE do PostgreSQL para reservas vinculadas.
       store.reservations = store.reservations.filter(r => Number(r.room_id) !== id);
+      persistMockState();
       return { rows: [deletedRoom] };
     }
 
@@ -130,7 +205,26 @@ class MockDatabase {
         status: 'ativa'
       };
       store.reservations.push(newReservation);
+      persistMockState();
       return { rows: [newReservation] };
+    }
+
+    // UPDATE reservations
+    if (sqlLower.includes('update reservations') && sqlLower.includes('set date')) {
+      const resId = Number(params[0]);
+      const reservation = store.reservations.find(r => Number(r.id) === resId);
+      if (!reservation) {
+        return { rows: [] };
+      }
+
+      reservation.date = params[1];
+      reservation.start_time = params[2];
+      reservation.end_time = params[3];
+      reservation.room_id = params[4];
+      reservation.user_id = params[5];
+      reservation.status = params[6];
+      persistMockState();
+      return { rows: [reservation] };
     }
 
     // SELECT FROM reservations WHERE user_id
@@ -141,11 +235,12 @@ class MockDatabase {
     }
 
     // UPDATE reservations - cancelar
-    if (sqlLower.includes('update reservations')) {
+    if (sqlLower.includes('update reservations') && sqlLower.includes("set status = 'cancelada'")) {
       const resId = params[0];
       const reservation = store.reservations.find(r => r.id === resId);
       if (reservation) {
         reservation.status = 'cancelada';
+        persistMockState();
         return { rows: [reservation] };
       }
       return { rows: [] };

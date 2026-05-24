@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Professor - UniReserva</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-brand">
+        <h1>UniReserva</h1>
+        <p>Sistema de Reserva de Salas Universitárias</p>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Alternar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card login-card login-professor">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-arrow-right" data-fg-djkv51="1.47:1.9237:/src/app/components/LoginPage.tsx:139:17:6301:45:e:ArrowRight::::::s5N" data-fgid-djkv51=":r1c:"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg> 
+        Voltar</a>
+      
+      <div class="login-header">
+        <div class="login-icon">
+           <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap w-8 h-8 text-accent" data-fg-djkv39="1.47:1.9237:/src/app/components/LoginPage.tsx:110:21:4979:49:e:GraduationCap::::::CR9S" data-fgid-djkv39=":r15:"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+        </div>
+        <div>
+          <h2>Professor</h2>
+          <p class="login-subtitle">Faça login para continuar</p>
+        </div>
+      </div>
+
+      <form id="login-form">
+        <label for="email">Email</label>
+        <input class="container-form" id="email" name="email" type="email" placeholder="seu@email.com" required />
+
+        <label for="password">Senha</label>
+        <input class="container-form" id="password" name="password" type="password" placeholder="••••••••" required />
+
+        <button type="submit" class="btn-login btn-professor">Entrar</button>
+      </form>
+      <p id="login-status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="theme.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

@@ -22,6 +22,16 @@ async function createRoom({ name, capacity, type }) {
   return result.rows[0];
 }
 
+async function updateRoomById(id, { name, capacity, type }) {
+  const db = getDatabase();
+  const result = await db.query(
+    'UPDATE rooms SET name = $2, capacity = $3, type = $4 WHERE id = $1 RETURNING id, name, capacity, type',
+    [id, name, capacity, type]
+  );
+
+  return result.rows[0] || null;
+}
+
 async function deleteRoomById(id) {
   const db = getDatabase();
   const result = await db.query('DELETE FROM rooms WHERE id = $1 RETURNING id, name, capacity, type', [id]);
@@ -32,5 +42,6 @@ module.exports = {
   listRooms,
   findRoomById,
   createRoom,
+  updateRoomById,
   deleteRoomById
 };

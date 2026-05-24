@@ -9,6 +9,12 @@ async function findByEmail(email) {
   return result.rows[0] || null;
 }
 
+async function listUsers() {
+  const db = getDatabase();
+  const result = await db.query('SELECT id, name, email, type FROM users ORDER BY id');
+  return result.rows;
+}
+
 async function createUser({ name, email, password, type }) {
   const db = getDatabase();
   const result = await db.query(
@@ -21,5 +27,6 @@ async function createUser({ name, email, password, type }) {
 
 module.exports = {
   findByEmail,
+  listUsers,
   createUser
 };

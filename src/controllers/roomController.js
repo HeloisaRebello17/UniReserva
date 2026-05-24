@@ -18,6 +18,15 @@ async function create(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    const room = await roomService.updateRoom(req.params.id, req.body);
+    res.json(room);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+
 async function remove(req, res) {
   try {
     const room = await roomService.deleteRoom(req.params.id);
@@ -30,5 +39,6 @@ async function remove(req, res) {
 module.exports = {
   list,
   create,
+  update,
   remove
 };

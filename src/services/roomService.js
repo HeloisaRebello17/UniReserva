@@ -16,6 +16,24 @@ async function createRoom({ name, capacity, type }) {
   });
 }
 
+async function updateRoom(id, { name, capacity, type }) {
+  if (!name || !capacity || !type) {
+    throw new Error('Nome, capacidade e tipo da sala são obrigatórios.');
+  }
+
+  const updatedRoom = await roomRepository.updateRoomById(Number(id), {
+    name,
+    capacity: Number(capacity),
+    type
+  });
+
+  if (!updatedRoom) {
+    throw new Error('Sala não encontrada.');
+  }
+
+  return updatedRoom;
+}
+
 async function deleteRoom(id) {
   const deletedRoom = await roomRepository.deleteRoomById(Number(id));
   if (!deletedRoom) {
@@ -28,5 +46,6 @@ async function deleteRoom(id) {
 module.exports = {
   listRooms,
   createRoom,
+  updateRoom,
   deleteRoom
 };
