@@ -26,10 +26,13 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-  try {
+   try {
+    console.log('REQ USER:', req.user);
+    console.log('REQ BODY:', req.body);
+    console.log('REQ PARAMS:', req.params);
     const reservation = await reservationService.updateReservation(req.params.id, req.body, req.user);
     res.json(reservation);
-  } catch (error) {
+  } catch (error){
     if (error.code === 'FORBIDDEN') {
       return res.status(403).json({ message: error.message });
     }

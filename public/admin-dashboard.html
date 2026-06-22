@@ -6,132 +6,117 @@
   <title>Admin Dashboard - UniReserva</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="admin-layout">
-  <!-- Sidebar Navigation -->
-  <aside class="admin-sidebar">
-    <div class="sidebar-header">
-      <h1 class="sidebar-title">Uni Reserva</h1>
-      <p class="sidebar-subtitle">Admin Panel</p>
+<body>
+
+  <!-- NAVBAR SUPERIOR -->
+  <header class="admin-topbar">
+    <div class="admin-topbar-brand">
+      <h1 class="sidebar-title">UniReserva</h1>
     </div>
 
-    <nav class="sidebar-nav">
+    <nav class="admin-topbar-nav">
       <button class="nav-item active" data-tab="dashboard">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r22:"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
         <span class="nav-label">Dashboard</span>
       </button>
       <button class="nav-item" data-tab="salas">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 lucide-building-2 w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r25:"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
         <span class="nav-label">Salas</span>
       </button>
       <button class="nav-item" data-tab="usuarios">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r28:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         <span class="nav-label">Usuários</span>
       </button>
       <button class="nav-item" data-tab="agenda">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r2b:"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
         <span class="nav-label">Agenda</span>
       </button>
       <button class="nav-item" data-tab="configuracoes">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r2e:"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
         <span class="nav-label">Configurações</span>
       </button>
     </nav>
 
-    <div class="sidebar-footer">
-      <button id="logout-btn" class="btn-logout">Sair</button>
+    <div class="admin-topbar-right">
+      <p id="current-date"></p>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button id="logout-btn" class="btn-logout" style="width:auto;padding:.5rem 1.25rem;font-size:.85rem">Sair</button>
     </div>
-  </aside>
+  </header>
 
-  <!-- Main Content -->
-  <main class="admin-main">
-    <!-- Header -->
-    <header class="admin-header">
-      <div class="header-left">
-        <h2 id="page-title">Dashboard</h2>
-        <p id="page-subtitle">Bem-vindo de volta, Admin</p>
-      </div>
-      <div class="header-right">
-        <p id="current-date">Hoje</p>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
-          <span class="theme-icon">🌙</span>
-        </button>
-      </div>
-    </header>
+  <!-- MAIN -->
+  <main class="admin-main-top">
+    <div class="admin-content-top">
 
-    <!-- Content Area -->
-    <div class="admin-content">
+      <div class="admin-page-header">
+        <div>
+          <h2 id="page-title">Dashboard</h2>
+          <p id="page-subtitle">Bem-vindo de volta, Admin</p>
+        </div>
+      </div>
+
       <!-- Dashboard Tab -->
       <section id="dashboard-tab" class="tab-content active">
-        <!-- Metrics Cards -->
         <div class="metrics-grid">
           <div class="metric-card">
             <div class="metric-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 lucide-building-2 w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r25:"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
             </div>
             <div class="metric-info">
               <span class="metric-label">Total de Salas</span>
-              <span class="metric-value" id="total-rooms">24</span>
+              <span class="metric-value" id="total-rooms">0</span>
               <span class="metric-trend">+2 esta semana</span>
             </div>
           </div>
-
           <div class="metric-card">
             <div class="metric-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6 text-accent" data-fg-easa50="1.45:1.11497:/src/app/components/AdminDashboard.tsx:189:25:7006:45:e:Icon" data-fgid-easa50=":rfb:"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             </div>
             <div class="metric-info">
               <span class="metric-label">Ocupação Atual</span>
-              <span class="metric-value" id="current-occupancy">67%</span>
+              <span class="metric-value" id="current-occupancy">0%</span>
               <span class="metric-trend">+5% esta semana</span>
             </div>
           </div>
-
           <div class="metric-card">
             <div class="metric-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r2b:"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
             </div>
             <div class="metric-info">
               <span class="metric-label">Reservas Hoje</span>
-              <span class="metric-value" id="today-reservations">42</span>
+              <span class="metric-value" id="today-reservations">0</span>
               <span class="metric-trend">+8 em comparação</span>
             </div>
           </div>
-
           <div class="metric-card">
             <div class="metric-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-5 h-5" data-fg-easa13="1.45:1.11497:/src/app/components/AdminDashboard.tsx:119:17:3879:28:e:Icon" data-fgid-easa13=":r28:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="metric-info">
               <span class="metric-label">Usuários Ativos</span>
-              <span class="metric-value" id="active-users">156</span>
+              <span class="metric-value" id="active-users">0</span>
               <span class="metric-trend">+12 novos</span>
             </div>
           </div>
         </div>
 
-        <!-- Salas and Recent Activity -->
         <div class="dashboard-grid">
-          <!-- Salas Section -->
           <section class="dashboard-section">
             <div class="section-header">
               <h3>Salas</h3>
               <button class="btn-primary" id="btn-nova-sala">+ Nova Sala</button>
             </div>
-            <div id="salas-list" class="salas-list">
-              <!-- Salas serão carregadas aqui -->
-            </div>
+            <div id="salas-list" class="salas-list"></div>
           </section>
-
-          <!-- Recent Activity Section -->
           <section class="dashboard-section">
             <h3>Atividade Recente</h3>
-            <div id="recent-activity" class="activity-list">
-              <!-- Atividades serão carregadas aqui -->
-            </div>
+            <div id="recent-activity" class="activity-list"></div>
           </section>
         </div>
 
-        <section class="dashboard-section" style="margin-top: 2rem;">
+        <section class="dashboard-section" style="margin-top:2rem">
           <h3 id="reservation-section-title">Reservas Recentes</h3>
           <ul id="reservation-list" class="list"></ul>
         </section>
@@ -139,28 +124,19 @@
 
       <!-- Salas Tab -->
       <section id="salas-tab" class="tab-content">
-        <div class="salas-management">
-          <div class="section-header" style="margin-bottom: 2rem;">
-            <h3>Gerenciar Salas</h3>
-            <button class="btn-primary" id="btn-adicionar-sala">+ Nova Sala</button>
-          </div>
-          <div id="salas-management-list" class="salas-grid">
-            <!-- Salas de gerenciamento serão carregadas aqui -->
-          </div>
+        <div class="section-header" style="margin-bottom:2rem">
+          <h3>Gerenciar Salas</h3>
+          <button class="btn-primary" id="btn-adicionar-sala">+ Nova Sala</button>
         </div>
+        <div id="salas-management-list" class="salas-grid"></div>
       </section>
 
       <!-- Usuários Tab -->
       <section id="usuarios-tab" class="tab-content">
-        <div class="usuarios-management">
-          <div class="section-header" style="margin-bottom: 2rem;">
-            <h3>Gerenciar Usuários</h3>
-            <button class="btn-primary" id="btn-novo-usuario">+ Novo Usuário</button>
-          </div>
-          <div id="usuarios-list" class="usuarios-table">
-            <!-- Usuários serão carregados aqui -->
-          </div>
+        <div class="section-header" style="margin-bottom:2rem">
+          <button class="btn-primary" id="btn-novo-usuario" style="margin-left: 1120px;">+ Novo Usuário</button>
         </div>
+        <div id="usuarios-list" class="usuarios-table"></div>
       </section>
 
       <!-- Agenda Tab -->
@@ -171,13 +147,11 @@
             <div class="agenda-controls">
               <button class="btn-primary" id="btn-nova-reserva" type="button">+ Nova Reserva</button>
               <button class="btn-nav" id="btn-prev-week" type="button">←</button>
-              <span id="week-range">11 de mai. - 16 de mai. de 2026</span>
+              <span id="week-range">--</span>
               <button class="btn-nav" id="btn-next-week" type="button">→</button>
             </div>
           </div>
-          <div id="agenda-calendar" class="agenda-calendar">
-            <!-- Agenda será carregada aqui -->
-          </div>
+          <div id="agenda-calendar" class="agenda-calendar"></div>
         </div>
       </section>
 
@@ -190,18 +164,13 @@
             <p>Versão: 1.0.0</p>
             <p>API: Online</p>
           </div>
-          <div class="config-section">
-            <h4>Preferências</h4>
-            <label>
-              <input type="checkbox" id="notifications-enabled" checked />
-              Notificações habilitadas
-            </label>
-          </div>
         </div>
       </section>
+
     </div>
   </main>
 
+  <!-- MODAL -->
   <div id="admin-modal" class="admin-modal hidden" aria-hidden="true">
     <div class="admin-modal-backdrop" data-modal-close></div>
     <div class="admin-modal-panel" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
@@ -219,7 +188,24 @@
     </div>
   </div>
 
+  <p id="admin-status" class="status admin-status"></p>
+
   <script src="theme.js"></script>
   <script src="admin-dashboard.js"></script>
+
+      <!-- MODAL CONFIRMAR -->
+    <div id="modal-confirmar" class="admin-modal hidden">
+      <div class="admin-modal-backdrop" id="modal-confirmar-backdrop"></div>
+      <div class="admin-modal-panel" style="max-width:360px">
+        <div class="admin-modal-header">
+          <h3 id="modal-confirmar-titulo">Confirmar ação</h3>
+        </div>
+        <p id="modal-confirmar-msg" style="font-size:.9rem;color:var(--muted);margin:0 0 1.5rem"></p>
+        <div class="admin-modal-actions">
+          <button id="modal-confirmar-ok" class="btn-primary" style="min-width:100px">Confirmar</button>
+          <button id="modal-confirmar-cancel" class="secondary-button" style="margin-top:0">Cancelar</button>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

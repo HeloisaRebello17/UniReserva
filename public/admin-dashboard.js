@@ -9,6 +9,34 @@ const state = {
   currentWeekOffset: 0
 };
 
+function confirmar(mensagem) {
+  return new Promise((resolve) => {
+    const modal    = document.getElementById('modal-confirmar');
+    const msg      = document.getElementById('modal-confirmar-msg');
+    const ok       = document.getElementById('modal-confirmar-ok');
+    const cancel   = document.getElementById('modal-confirmar-cancel');
+    const backdrop = document.getElementById('modal-confirmar-backdrop');
+
+    msg.textContent = mensagem;
+    modal.classList.remove('hidden');
+
+    function fechar(resultado) {
+      modal.classList.add('hidden');
+      ok.removeEventListener('click', onOk);
+      cancel.removeEventListener('click', onCancel);
+      backdrop.removeEventListener('click', onCancel);
+      resolve(resultado);
+    }
+
+    function onOk()     { fechar(true);  }
+    function onCancel() { fechar(false); }
+
+    ok.addEventListener('click', onOk);
+    cancel.addEventListener('click', onCancel);
+    backdrop.addEventListener('click', onCancel);
+  });
+}
+
 const API_BASE_CANDIDATES = (() => {
   if (['3000', '3001'].includes(window.location.port)) {
     return [''];
@@ -592,14 +620,14 @@ function openUserModal() {
         name: 'type',
         label: 'Tipo',
         type: 'select',
-        value: 'teacher',
+        value: 'professor',
         options: [
           { value: 'admin', label: 'Administrador' },
-          { value: 'teacher', label: 'Professor' }
+          { value: 'professor', label: 'Professor' }
         ]
       }
     ],
-    values: { type: 'teacher' },
+    values: { type: 'professor' },
     onSubmit: async (values) => {
       await apiRequest('/api/users', {
         method: 'POST',
@@ -700,7 +728,7 @@ async function editRoom(roomId) {
 }
 
 async function deleteRoom(roomId) {
-  if (!window.confirm('Deseja remover esta sala? As reservas vinculadas também serão afetadas.')) {
+  if (!await confirmar('Deseja remover esta sala? As reservas vinculadas também serão afetadas.')) {
     return;
   }
 
@@ -734,7 +762,7 @@ async function editReservation(reservationId) {
 }
 
 async function cancelReservation(reservationId) {
-  if (!window.confirm('Deseja cancelar esta reserva?')) {
+  if (!await confirmar('Deseja cancelar esta reserva?')) {
     return;
   }
 

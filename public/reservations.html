@@ -3,89 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reservas - UniReserva</title>
+  <title>UniReserva</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="professor.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-brand">
-      <img src="/assets/images/Logo_UniReserva.png" alt="Logo UniReserva" class="logo" />
-      <div>
-        <h1>UniReserva</h1>
-        <p>Sistema de reserva de salas</p>
+
+  <!-- NAVBAR -->
+  <header class="pf-navbar">
+    <a href="#" class="pf-brand">UniReserva</span></a>
+    <nav class="pf-nav">
+      <button class="pf-nav-link active" data-tab="salas">Salas</button>
+      <button class="pf-nav-link" data-tab="reservas">Minhas Reservas</button>
+      <button class="pf-nav-link" data-tab="agenda">Agenda Semanal</button>
+    </nav>
+    <div class="pf-nav-right">
+      <button id="theme-toggle" class="pf-theme-toggle" aria-label="Alternar tema">
+        <span class="theme-icon"></span>
+      </button>
+      <div class="pf-user">
+        <div class="pf-user-info">
+          <span class="pf-user-name" id="user-name">Prof. Santos</span>
+          <span class="pf-user-role">Professor</span>
+        </div>
+        <div class="pf-avatar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <button id="logout-button" class="pf-logout" title="Sair">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
       </div>
-    </div>
-    <div class="hero-actions">
-      <button id="theme-toggle" type="button" class="theme-toggle">Modo escuro</button>
-      <p id="session-status" class="status"></p>
-      <button id="logout-button" type="button" class="secondary-button" style="display: none;">Sair</button>
     </div>
   </header>
 
-  <main class="grid">
-    <section class="card">
-      <h2>Salas disponíveis</h2>
-      <div id="room-types" style="display: grid; gap: 10px;"></div>
-    </section>
+  <main class="pf-main">
 
-    <section class="card card-wide">
-      <h2>Agendar reserva</h2>
-      <form id="reservation-form">
-        <div class="row">
-          <div>
-            <label for="date">Data</label>
-            <input id="date" name="date" type="date" required />
+    <!-- HERO -->
+    <div class="pf-hero">
+      <h1 class="pf-hello">Bem-vindo, <span id="user-hello">Professor Santos</span></h1>
+      <p class="pf-hello-sub">Gerencie suas reservas de sala de forma simples e rápida</p>
+    </div>
+
+    <!-- METRIC CARDS -->
+    <div class="pf-metrics">
+      <div class="pf-metric pf-metric--pink">
+        <div class="pf-metric-icon pf-metric-icon--pink">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <div class="pf-metric-val" id="metric-ativas">0</div>
+          <div class="pf-metric-label">Reservas Ativas</div>
+        </div>
+      </div>
+      <div class="pf-metric pf-metric--amber">
+        <div class="pf-metric-icon pf-metric-icon--amber">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="pf-metric-val" id="metric-proxima">--:--</div>
+          <div class="pf-metric-label">Próxima Aula</div>
+        </div>
+      </div>
+      <div class="pf-metric pf-metric--teal">
+        <div class="pf-metric-icon pf-metric-icon--teal">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="pf-metric-val" id="metric-salas">0</div>
+          <div class="pf-metric-label">Salas Disponíveis</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: SALAS -->
+    <div id="tab-salas" class="pf-tab-content active">
+      <div class="pf-salas-layout">
+        <div class="pf-salas-main">
+          <!-- Busca + filtros -->
+          <div class="pf-search-bar">
+            <div class="pf-search-input-wrap">
+              <svg class="pf-search-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="search-salas" class="pf-search-input" placeholder="Buscar salas..." />
+            </div>
+            <div class="pf-filter-btns">
+              <button class="pf-filter active" data-filter="todas">Todas</button>
+              <button class="pf-filter" data-filter="disponivel">Disponíveis</button>
+              <button class="pf-filter" data-filter="ocupada">Ocupadas</button>
+            </div>
           </div>
-          <div>
-            <label for="startTime">Início</label>
-            <input id="startTime" name="startTime" type="time" value="19:00" required />
-          </div>
-          <div>
-            <label for="endTime">Fim</label>
-            <input id="endTime" name="endTime" type="time" value="20:00" required />
+
+          <!-- Lista de salas -->
+          <div id="rooms-list"></div>
+        </div>
+
+        <!-- Painel lateral: Minhas Reservas (preview) -->
+        <aside class="pf-aside">
+          <h2 class="pf-aside-title">Minhas Reservas</h2>
+          <div id="aside-reservations"></div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- TAB: MINHAS RESERVAS -->
+    <div id="tab-reservas" class="pf-tab-content">
+      <div class="pf-reservas-header">
+        <h2 class="pf-section-title">Próximas Reservas</h2>
+        <span class="pf-badge" id="badge-ativas">0 ativas</span>
+      </div>
+      <div id="reservations-list"></div>
+    </div>
+
+    <!-- TAB: AGENDA SEMANAL -->
+    <div id="tab-agenda" class="pf-tab-content">
+      <div class="pf-agenda-card">
+        <div class="pf-agenda-header">
+          <h2 class="pf-agenda-title">Agenda Semanal</h2>
+          <div class="pf-agenda-controls">
+            <button class="pf-week-nav" id="week-prev">&#8249;</button>
+            <div class="pf-week-label">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="week-range">--</span>
+            </div>
+            <button class="pf-week-nav" id="week-next">&#8250;</button>
           </div>
         </div>
-        <div class="row">
-          <div style="flex: 1;">
-            <label for="roomId">Sala disponível</label>
-            <select id="roomId" name="roomId" required>
-              <option value="">-- Selecione uma sala --</option>
-            </select>
-          </div>
+        <div class="pf-calendar-wrap">
+          <div class="pf-calendar" id="calendar"></div>
         </div>
-        <button type="submit">Reservar sala</button>
-      </form>
-      <p id="reservation-status" class="status"></p>
-    </section>
+      </div>
+    </div>
 
-    <section id="admin-room-panel" class="card card-wide" style="display: none;">
-      <h2>Gerenciar salas (Administrador)</h2>
-      <form id="room-form">
-        <div class="row">
-          <div>
-            <label for="roomName">Nome da sala</label>
-            <input id="roomName" name="name" type="text" required />
-          </div>
-          <div>
-            <label for="roomCapacity">Capacidade</label>
-            <input id="roomCapacity" name="capacity" type="number" min="1" required />
-          </div>
-          <div>
-            <label for="roomType">Tipo</label>
-            <input id="roomType" name="type" type="text" placeholder="laboratório, sala comum..." required />
-          </div>
+    <!-- MODAL RESERVAR -->
+    <div id="modal-reservar" class="pf-modal hidden">
+      <div class="pf-modal-backdrop" id="modal-backdrop"></div>
+      <div class="pf-modal-panel">
+        <div class="pf-modal-header">
+          <h3>Reservar sala</h3>
+          <button class="pf-modal-close" id="modal-close">✕</button>
         </div>
-        <button type="submit">Adicionar sala</button>
-      </form>
-      <p id="room-status" class="status"></p>
-      <ul id="room-admin-list" class="list"></ul>
-    </section>
+        <div class="pf-modal-room-name" id="modal-room-label"></div>
+        <form id="reservation-form" class="pf-modal-form">
+          <input type="hidden" id="roomId" name="roomId" />
+          <div class="pf-form-row">
+            <div class="pf-form-group">
+              <label for="date">Data</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div class="pf-form-group">
+              <label for="startTime">Início</label>
+              <input id="startTime" name="startTime" type="time" value="08:00" required />
+            </div>
+            <div class="pf-form-group">
+              <label for="endTime">Fim</label>
+              <input id="endTime" name="endTime" type="time" value="10:00" required />
+            </div>
+          </div>
+          <p id="reservation-status" class="status"></p>
+          <div class="pf-modal-actions">
+            <button type="submit" class="pf-btn-primary">Confirmar reserva</button>
+            <button type="button" class="pf-btn-secondary" id="modal-cancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-    <section class="card card-wide">
-      <h2 id="reservation-section-title">Minhas reservas</h2>
-      <button id="load-reservations" type="button">Atualizar reservas</button>
-      <ul id="reservation-list" class="list"></ul>
-    </section>
+          <!-- MODAL DETALHES -->
+      <div id="modal-detalhes" class="pf-modal hidden">
+        <div class="pf-modal-backdrop" id="modal-detalhes-backdrop"></div>
+        <div class="pf-modal-panel">
+          <div class="pf-modal-header">
+            <h3>Detalhes da Reserva</h3>
+            <button class="pf-modal-close" id="modal-detalhes-close">✕</button>
+          </div>
+          <div id="modal-detalhes-body" style="display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem;font-size:.9rem"></div>
+        </div>
+      </div>
+
+    <!-- Hidden: usado pelo JS legado -->
+    <button id="load-reservations" style="display:none"></button>
+    <p id="session-status" class="status" style="display:none"></p>
+
+        <!-- MODAL CONFIRMAR -->
+    <div id="modal-confirmar" class="pf-modal hidden">
+      <div class="pf-modal-backdrop" id="modal-confirmar-backdrop"></div>
+      <div class="pf-modal-panel" style="max-width:360px">
+        <div class="pf-modal-header">
+          <h3 id="modal-confirmar-titulo">Confirmar ação</h3>
+        </div>
+        <p id="modal-confirmar-msg" style="font-size:.9rem;color:var(--muted);margin:0 0 1.5rem"></p>
+        <div class="pf-modal-actions">
+          <button id="modal-confirmar-ok" class="pf-btn-primary">Confirmar</button>
+          <button id="modal-confirmar-cancel" class="pf-btn-secondary">Cancelar</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="theme.js"></script>

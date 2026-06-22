@@ -1,0 +1,850 @@
+/* ===== PROFESSOR PAGE ===== */
+
+/* NAVBAR */
+.pf-navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.pf-brand {
+    background: linear-gradient(to right, var(--admin-accent), #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    color: transparent;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.pf-brand span {
+    background: linear-gradient(to right, var(--admin-accent), #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    color: transparent;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.pf-nav {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.pf-nav-link {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: color 0.15s;
+  min-width: auto;
+}
+
+.pf-nav-link:hover { color: var(--text); background: var(--surface-soft); }
+
+.pf-nav-link.active {
+  font-weight: 700;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.pf-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.pf-notif {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  color: var(--muted);
+  cursor: pointer;
+  min-width: auto;
+  border-radius: 50%;
+  display: flex;
+}
+
+.pf-notif:hover { background: var(--surface-soft); color: var(--text); }
+
+.pf-notif-dot {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 8px; height: 8px;
+  background: var(--professor-accent);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+
+.pf-theme-toggle {
+    width: 5em;
+    min-width: auto;
+    height: 2rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--border);
+    padding: 0.6rem 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.pf-theme-toggle:hover { background: var(--border); }
+
+[data-theme="dark"] .pf-theme-icon-light { display: none; }
+[data-theme="light"] .pf-theme-icon-dark,
+:not([data-theme]) .pf-theme-icon-dark { display: none; }
+
+.pf-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pf-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.pf-user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pf-user-role {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.pf-avatar {
+  width: 36px; height: 36px;
+  background: var(--professor-bg-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--professor-accent);
+}
+
+.pf-logout {
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  color: var(--muted);
+  cursor: pointer;
+  min-width: auto;
+  border-radius: 6px;
+  display: flex;
+}
+
+.pf-logout:hover { color: var(--error); background: var(--error-bg); }
+
+/* MAIN */
+.pf-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+
+/* HERO */
+.pf-hero { margin-bottom: 1.75rem; }
+
+.pf-hello {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.pf-hello-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* METRICS */
+.pf-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pf-metric {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+}
+
+.pf-metric--pink  { background: #FDE8EC; border: 0.5px solid #f9cbd4;}
+.pf-metric--amber { background: #FEF3DC; border: 0.5px solid #fdd9a0;}
+.pf-metric--teal  { background: #E0F5EE; border: 0.5px solid #a8e6d0;}
+
+[data-theme="dark"] .pf-metric--pink  { background: #1c050b; border: 1px solid #5A0A1E; }
+[data-theme="dark"] .pf-metric--amber { background: #180f00; border: 0.5px solid #4f3203; }
+[data-theme="dark"] .pf-metric--teal  { background: #031c13; border: 0.5px solid #03472e;}
+
+.pf-metric-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pf-metric-icon--pink  { background: #F9C0CC; color: #C0183A; }
+.pf-metric-icon--amber { background: #FDD9A0; color: #A06010; }
+.pf-metric-icon--teal  { background: #A8E6D0; color: #0A6E50; }
+
+[data-theme="dark"] .pf-metric-icon--pink  { background: #5A0A1E; color: #FF6080; }
+[data-theme="dark"] .pf-metric-icon--amber { background: #4A2800; color: #FFB040; }
+[data-theme="dark"] .pf-metric-icon--teal  { background: #0A3A28; color: #40D0A0; }
+
+.pf-metric-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.pf-metric-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* TAB CONTENT */
+.pf-tab-content { display: none; }
+.pf-tab-content.active { display: block; }
+
+/* SALAS LAYOUT */
+.pf-salas-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* SEARCH BAR */
+.pf-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.pf-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.pf-search-icon { color: var(--muted); flex-shrink: 0; }
+
+.pf-search-input {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--text);
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+}
+
+.pf-search-input::placeholder { color: var(--muted); }
+
+.pf-filter-btns { display: flex; gap: 0.5rem; }
+
+.pf-filter {
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: auto;
+  transition: all 0.15s;
+}
+
+.pf-filter:hover { background: var(--surface-soft); color: var(--text); }
+
+.pf-filter.active {
+  background: var(--professor-accent);
+  color: #fff;
+  border-color: var(--professor-accent);
+}
+
+/* SALA ITEM */
+.pf-sala-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.pf-sala-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.pf-sala-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.pf-sala-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.pf-sala-status-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+}
+
+.pf-sala-status--disponivel { color: #16A34A; }
+.pf-sala-status--disponivel .pf-sala-status-dot { background: #16A34A; }
+.pf-sala-status--ocupada { color: #DC2626; }
+.pf-sala-status--ocupada .pf-sala-status-dot { background: #DC2626; }
+
+.pf-sala-cap {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pf-sala-features {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.pf-sala-feat {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.pf-sala-reserva-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.pf-btn-reservar {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--professor-accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.pf-btn-reservar:hover {
+  background: #f0c576;
+  transform: translateY(-1px);
+}
+
+.pf-btn-reservar:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* ASIDE */
+.pf-aside { position: sticky; top: 76px; }
+
+.pf-aside-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.pf-aside-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.pf-aside-card-dot {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #DC2626;
+}
+
+.pf-aside-card-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 0.2rem;
+}
+
+.pf-aside-card-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.pf-aside-card-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.pf-btn-detalhes {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.6rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  min-width: auto;
+  transition: background 0.15s;
+}
+
+.pf-btn-detalhes:hover { background: var(--border); }
+
+/* RESERVAS TAB */
+.pf-reservas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.pf-section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.pf-badge {
+  background: #FDE8EC;
+  color: #C0183A;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+}
+
+[data-theme="dark"] .pf-badge { background: #3A0A15; color: #FF6080; }
+
+.pf-reserva-item {
+  background: var(--surface);
+  border: 1px solid #5A0A1E;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pf-reserva-icon {
+  width: 40px; height: 40px;
+  background: #FDE8EC;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C0183A;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .pf-reserva-icon { background: #3A0A15; color: #FF6080; }
+
+.pf-reserva-info { flex: 1; }
+
+.pf-reserva-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 0.15rem;
+}
+
+.pf-reserva-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.pf-reserva-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.pf-reserva-actions { display: flex; gap: 0.5rem; }
+
+.pf-btn-edit, .pf-btn-delete {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.pf-btn-edit {
+  background: transparent;
+  color: #e11d48;
+}
+
+.pf-btn-edit:hover { background: #36070f;}
+
+.pf-btn-delete {
+  background: transparent;
+  color: #e11d48;
+}
+
+.pf-btn-delete:hover { background: #36070f; }
+
+/* AGENDA */
+.pf-agenda-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.pf-agenda-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.pf-agenda-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+
+.pf-agenda-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pf-week-nav {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  padding: 0;
+  transition: all 0.15s;
+}
+
+.pf-week-nav:hover { background: var(--border); }
+
+.pf-week-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.875rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* CALENDAR GRID */
+.pf-calendar-wrap { overflow-x: auto; }
+
+.pf-calendar {
+  display: grid;
+  grid-template-columns: 80px repeat(6, 1fr);
+  min-width: 700px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pf-cal-corner {
+  background: var(--surface-soft);
+  padding: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.pf-cal-day-head {
+  background: var(--surface-soft);
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.pf-cal-day-head:last-child { border-right: none; }
+
+.pf-cal-day-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.pf-cal-day-num {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.pf-cal-day-head.today .pf-cal-day-name,
+.pf-cal-day-head.today .pf-cal-day-num {
+  color: #C0183A;
+  font-weight: 800;
+}
+
+.pf-cal-day-head.today {
+  background: #FDE8EC;
+}
+
+[data-theme="dark"] .pf-cal-day-head.today { background: #2A0A12; }
+
+.pf-cal-time {
+  background: var(--surface-soft);
+  padding: 0.6rem 0.5rem;
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.pf-cal-cell {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  min-height: 52px;
+  padding: 0.3rem;
+  position: relative;
+}
+
+.pf-cal-cell:last-child { border-right: none; }
+
+.pf-cal-event {
+  background: var(--professor-accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+}
+
+.pf-cal-event-room { font-weight: 700; margin-bottom: 1px; }
+.pf-cal-event-sub { font-weight: 400; opacity: 0.9; font-size: 0.7rem; }
+.pf-cal-event-time { opacity: 0.85; font-size: 0.68rem; margin-top: 2px; }
+
+/* MODAL */
+.pf-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.pf-modal.hidden { display: none; }
+
+.pf-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+}
+
+.pf-modal-panel {
+  position: relative; z-index: 1;
+  width: min(580px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+}
+
+.pf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.pf-modal-header h3 { margin: 0; font-size: 1.1rem; }
+
+.pf-modal-close {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.pf-modal-close:hover { background: var(--error-bg); color: var(--error); }
+
+.pf-modal-room-name {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pf-modal-form { display: flex; flex-direction: column; gap: 0; }
+
+.pf-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pf-form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.pf-modal-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+
+.pf-btn-primary {
+  flex: 1;
+  padding: 0.8rem;
+  background: var(--professor-accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pf-btn-primary:hover { background: #8F6416; }
+
+.pf-btn-secondary {
+  padding: 0.8rem 1.25rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 500;
+  min-width: auto;
+  margin-top: 0;
+}
+
+.pf-btn-secondary:hover { background: var(--border); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .pf-salas-layout { grid-template-columns: 1fr; }
+  .pf-aside { position: static; }
+  .pf-metrics { grid-template-columns: 1fr; }
+  .pf-calendar { grid-template-columns: 60px repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .pf-navbar { padding: 0 1rem; gap: 0.75rem; }
+  .pf-main { padding: 1rem; }
+  .pf-hello { font-size: 1.4rem; }
+  .pf-form-row { grid-template-columns: 1fr; }
+  .pf-filter-btns { gap: 0.25rem; }
+}

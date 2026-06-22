@@ -59,6 +59,7 @@ class MockDatabase {
   async query(sql, params = []) {
     loadMockState();
     const sqlLower = sql.toLowerCase();
+    console.log('SQL:', sqlLower.trim().slice(0, 120));
     
     // Ignorar CREATE TABLE e comentários
     if (sqlLower.includes('create table') || sqlLower.startsWith('--')) {
@@ -246,7 +247,19 @@ class MockDatabase {
       return { rows: [] };
     }
 
-    // SELECT FROM reservations
+    // SELECT FROM reservations WHERE id = $1 LIMIT 1
+    if (
+      sqlLower.includes('from reservations') &&
+      sqlLower.includes('where id = $1') &&
+      sqlLower.includes('limit 1')
+    ) {
+      const id = Number(params[0]);
+      const reservation = store.reservations.find(r => Number(r.id) === id);
+      console.log('FIND BY ID:', id, reservation);
+      return { rows: reservation ? [reservation] : [] };
+    }
+
+    // SELECT FROM reservations (genérico)
     if (sqlLower.includes('select') && sqlLower.includes('from reservations')) {
       return { rows: store.reservations };
     }

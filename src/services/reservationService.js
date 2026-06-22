@@ -73,27 +73,33 @@ async function cancelReservation(id, requester) {
 }
 
 async function updateReservation(id, { date, startTime, endTime, roomId, userId, status }, requester) {
-  if (!requester || requester.type !== 'admin') {
-    const error = new Error('Apenas administradores podem editar reservas.');
-    error.code = 'FORBIDDEN';
-    throw error;
-  }
-
-  if (!date || !startTime || !endTime || !roomId || !userId) {
-    throw new Error('Data, horários, sala e usuário são obrigatórios.');
-  }
-
-  if (endTime <= startTime) {
-    throw new Error('O horário de fim deve ser maior que o horário de início.');
-  }
-
   const reservationId = Number(id);
-  const normalizedRoomId = Number(roomId);
-  const normalizedUserId = Number(userId);
 
   const existingReservation = await reservationRepository.findReservationById(reservationId);
   if (!existingReservation) {
     throw new Error('Reserva não encontrada.');
+  }
+
+  const isAdmin = requester?.type === 'admin';
+  const isOwner = Number(existingReservation.userId) === Number(requester?.id);
+  console.log('existingReservation:', existingReservation);
+  console.log('isAdmin:', isAdmin, '| isOwner:', isOwner);
+
+  if (!isAdmin && !isOwner) {
+    const error = new Error('Sem permissão para editar esta reserva.');
+    error.code = 'FORBIDDEN';
+    throw error;
+  }
+
+  const normalizedUserId = isAdmin ? Number(userId ?? existingReservation.userId) : existingReservation.userId;
+  const normalizedRoomId = Number(roomId);
+
+  if (!date || !startTime || !endTime || !normalizedRoomId) {
+    throw new Error('Data, horários e sala são obrigatórios.');
+  }
+
+  if (endTime <= startTime) {
+    throw new Error('O horário de fim deve ser maior que o horário de início.');
   }
 
   const room = await roomRepository.findRoomById(normalizedRoomId);
@@ -101,26 +107,14 @@ async function updateReservation(id, { date, startTime, endTime, roomId, userId,
     throw new Error('Sala não encontrada.');
   }
 
-  const conflict = await reservationRepository.findConflict({
-    date,
-    startTime,
-    endTime,
-    roomId: normalizedRoomId
-  });
-
+  const conflict = await reservationRepository.findConflict({ date, startTime, endTime, roomId: normalizedRoomId });
   if (conflict && Number(conflict.id) !== reservationId) {
     const error = new Error('Já existe uma reserva para esta sala no horário informado.');
     error.code = 'CONFLICT';
     throw error;
   }
 
-  const userConflict = await reservationRepository.findUserConflict({
-    date,
-    startTime,
-    endTime,
-    userId: normalizedUserId
-  });
-
+  const userConflict = await reservationRepository.findUserConflict({ date, startTime, endTime, userId: normalizedUserId });
   if (userConflict && Number(userConflict.id) !== reservationId) {
     const error = new Error('Usuário já possui uma reserva neste horário.');
     error.code = 'CONFLICT';

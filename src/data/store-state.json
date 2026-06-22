@@ -20,13 +20,27 @@
       "email": "teste@unireserva.com",
       "password": "teste",
       "type": "teacher"
+    },
+    {
+      "id": 4,
+      "name": "testes",
+      "email": "testes@unireserva.com",
+      "password": "123",
+      "type": "teacher"
+    },
+    {
+      "id": 5,
+      "name": "Teste123",
+      "email": "teste123@gmail.com",
+      "password": "123",
+      "type": "professor"
     }
   ],
   "rooms": [
     {
       "id": 1,
       "name": "Sala 101",
-      "capacity": 30,
+      "capacity": 31,
       "type": "sala comum"
     },
     {
@@ -44,7 +58,7 @@
     {
       "id": 4,
       "name": "Sala Teste UI",
-      "capacity": 20,
+      "capacity": 21,
       "type": "sala comum"
     },
     {
@@ -52,6 +66,12 @@
       "name": "teste",
       "capacity": 32,
       "type": "teste"
+    },
+    {
+      "id": 6,
+      "name": "teste123",
+      "capacity": 20,
+      "type": "sala extra"
     }
   ],
   "reservations": [
@@ -62,7 +82,7 @@
       "end_time": "09:00",
       "room_id": 1,
       "user_id": 3,
-      "status": "ativa"
+      "status": "cancelada"
     },
     {
       "id": 2,
@@ -86,10 +106,109 @@
       "id": 4,
       "date": "2026-05-24",
       "start_time": "10:00",
+      "end_time": "11:20",
+      "room_id": 3,
+      "user_id": 2,
+      "status": "cancelada"
+    },
+    {
+      "id": 5,
+      "date": "2026-05-25",
+      "start_time": "08:00",
+      "end_time": "09:00",
+      "room_id": 4,
+      "user_id": 1,
+      "status": "ativa"
+    },
+    {
+      "id": 6,
+      "date": "2026-05-25",
+      "start_time": "19:00",
+      "end_time": "20:00",
+      "room_id": 5,
+      "user_id": 2,
+      "status": "ativa"
+    },
+    {
+      "id": 7,
+      "date": "2026-06-13",
+      "start_time": "08:00",
+      "end_time": "10:00",
+      "room_id": 1,
+      "user_id": 2,
+      "status": "cancelada"
+    },
+    {
+      "id": 8,
+      "date": "2026-06-16",
+      "start_time": "08:00",
+      "end_time": "09:00",
+      "room_id": 1,
+      "user_id": 2,
+      "status": "cancelada"
+    },
+    {
+      "id": 9,
+      "date": "2026-06-18",
+      "start_time": "08:00",
       "end_time": "11:00",
       "room_id": 1,
       "user_id": 2,
       "status": "ativa"
+    },
+    {
+      "id": 10,
+      "date": "2026-06-19",
+      "start_time": "08:00",
+      "end_time": "09:00",
+      "room_id": 1,
+      "user_id": 2,
+      "status": "ativa"
+    },
+    {
+      "id": 11,
+      "date": "2026-06-20",
+      "start_time": "08:00",
+      "end_time": "10:00",
+      "room_id": 1,
+      "user_id": 4,
+      "status": "ativa"
+    },
+    {
+      "id": 12,
+      "date": "2026-06-22",
+      "start_time": "08:00",
+      "end_time": "09:00",
+      "room_id": 1,
+      "user_id": 2,
+      "status": "cancelada"
+    },
+    {
+      "id": 13,
+      "date": "2026-06-22",
+      "start_time": "08:00",
+      "end_time": "09:00",
+      "room_id": 1,
+      "user_id": 1,
+      "status": "ativa"
+    },
+    {
+      "id": 14,
+      "date": "2026-06-23",
+      "start_time": "08:00",
+      "end_time": "11:00",
+      "room_id": 1,
+      "user_id": 5,
+      "status": "cancelada"
+    },
+    {
+      "id": 15,
+      "date": "2026-06-22",
+      "start_time": "08:00",
+      "end_time": "11:00",
+      "room_id": 2,
+      "user_id": 5,
+      "status": "cancelada"
     }
   ]
 }
