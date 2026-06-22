@@ -38,11 +38,15 @@ function confirmar(mensagem) {
 }
 
 const API_BASE_CANDIDATES = (() => {
-  if (['3000', '3001'].includes(window.location.port)) {
+  if (['3000', '3001'].includes(window.location.port)) return [''];
+  
+  const host = window.location.hostname || 'localhost';
+  
+  // Se estiver rodando no Render, usa a mesma origem
+  if (!host.includes('localhost') && !host.includes('127.0.0.1')) {
     return [''];
   }
-
-  const host = window.location.hostname || 'localhost';
+  
   return [
     `http://${host}:3001`,
     `http://${host}:3000`,
