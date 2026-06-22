@@ -236,9 +236,9 @@
     <li><p><b>Interface Web:</b> páginas de login, listagem de salas e gerenciamento de reservas.</p></li>
     <li><p><b>CI/CD Pipeline (✨ NOVO):</b> workflow automático no GitHub Actions com testes, linting (ESLint), security audit e Docker build validation.</p></li>
     <li><p><b>TDD - Testes Unitários (✨ NOVO):</b> 18+ testes que cobrem services de autenticação, salas e reservas com validações e casos de erro.</p></li>
-    <li><p><b>Deployment em Produção (✨ NOVO):</b> Dockerfile otimizado, docker-compose.prod.yml e documentação para Railway, Render, Docker VPS e AWS.</p></li>
-    <li><p><b>Observabilidade e Monitoramento (✨ NOVO):</b> logger estruturado JSON, middleware de HTTP request logging, documentação de integração com Winston, Sentry, Prometheus e DataDog.</p></li>
-    <li><p><b>Code Quality:</b> ESLint configurado, cobertura de testes, npm audit automático.</p></li>
+    <li><p><b>Deployment em Produção (✨ NOVO):</b> Dockerfile otimizado, docker-compose.prod.yml.</p></li>
+    <li><p><b>Observabilidade e Monitoramento (✨ NOVO):</b> logger estruturado JSON, middleware de HTTP request logging.</p></li>
+    <li><p><b>Link do site online (✨ NOVO):</b></p></li>
   </ul>
 
   <h3>Ajustes de Requisitos Identificados</h3>
@@ -310,14 +310,6 @@
     <li><p><b>HTTP Request Logging:</b> Middleware automático captura método, path, status, duration, IP e userId.</p></li>
     <li><p><b>Análise de Logs:</b> Execute <code>bash check-monitoring.sh</code> para visualizar dashboard com estatísticas em tempo real.</p></li>
     <li><p><b>Validação:</b> Ver <code>MONITORING_VALIDATION.md</code> para exemplos de análise de logs e detecção de erros.</p></li>
-  </ul>
-
-  <h3>Documentação Disponível</h3>
-  <ul>
-    <li><p><b><a href="MONITORING_VALIDATION.md">MONITORING_VALIDATION.md</a></b> → Guia completo de validação de monitoramento com exemplos.</p></li>
-    <li><p><b><a href="FREE_DEPLOYMENT.md">FREE_DEPLOYMENT.md</a></b> → Opções gratuitas para deployment em produção (Railway, Render, Fly.io).</p></li>
-    <li><p><b><a href="FREE_RAILWAY_QUICK_START.md">FREE_RAILWAY_QUICK_START.md</a></b> → Deploy em Railway em 10 minutos.</p></li>
-    <li><p><b><a href="RAILWAY_ADD_DATABASE_VISUAL_GUIDE.md">RAILWAY_ADD_DATABASE_VISUAL_GUIDE.md</a></b> → Guia visual com diagramas para adicionar PostgreSQL no Railway.</p></li>
   </ul>
 
   <h3>Usuários de Demonstração</h3>
