@@ -238,7 +238,6 @@
     <li><p><b>TDD - Testes Unitários (✨ NOVO):</b> 18+ testes que cobrem services de autenticação, salas e reservas com validações e casos de erro.</p></li>
     <li><p><b>Deployment em Produção (✨ NOVO):</b> Dockerfile otimizado, docker-compose.prod.yml.</p></li>
     <li><p><b>Observabilidade e Monitoramento (✨ NOVO):</b> logger estruturado JSON, middleware de HTTP request logging.</p></li>
-    <li><p><b>Link do site online (✨ NOVO):</b></p></li>
   </ul>
 
   <h3>Ajustes de Requisitos Identificados</h3>
