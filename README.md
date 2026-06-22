@@ -308,7 +308,6 @@
     <li><p><b>Logging Estruturado:</b> Todos os eventos registrados em JSON (arquivo <code>src/logs/app.log</code>).</p></li>
     <li><p><b>HTTP Request Logging:</b> Middleware automático captura método, path, status, duration, IP e userId.</p></li>
     <li><p><b>Análise de Logs:</b> Execute <code>bash check-monitoring.sh</code> para visualizar dashboard com estatísticas em tempo real.</p></li>
-    <li><p><b>Validação:</b> Ver <code>MONITORING_VALIDATION.md</code> para exemplos de análise de logs e detecção de erros.</p></li>
   </ul>
 
   <h3>Usuários de Demonstração</h3>
